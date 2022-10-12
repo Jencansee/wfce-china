@@ -1,9 +1,8 @@
-import { FC, ReactNode } from "react";
+import { FC, PropsWithChildren } from "react";
 import styled from "styled-components";
 
 interface BackdropProps { 
 	handleClick?: () => void,
-	children?: ReactNode,
 	opacity?: number,
 	indexZ?: number,
 };
@@ -15,7 +14,7 @@ const StyledBackdrop = styled.div<BackdropProps>`
 	height: 100vh; width: 100%;
 `;
 
-const Backdrop: FC<BackdropProps> = ({ children, opacity, handleClick }) => (
+const Backdrop: FC<PropsWithChildren<BackdropProps>> = ({ children, opacity, handleClick }) => (
 	<StyledBackdrop onClick={handleClick} opacity={opacity}>
 		{children}
 	</StyledBackdrop>

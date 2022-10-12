@@ -1,4 +1,5 @@
 import { StaticImageData } from "next/image";
+import { FC } from "react";
 import styled from "styled-components";
 import Card, { StyledCard } from "../Card/Card";
 
@@ -6,6 +7,7 @@ type Cards = {
 	text: string;
 	image?: StaticImageData;
 }
+
 interface CardsProps {
 	cards: Cards[];
 }
@@ -21,50 +23,70 @@ const StyledCards = styled.ul`
 		flex: 0 0 100%;
 		position: relative;
 		overflow: hidden;
-
+		transition: color .4s ease;
+		img { transition: filter .1s .2s ease; }
+		
 		&::before {
 			content: '';
 			background-color: #CD1D19;
-			/* width: 80px; */
-			/* height: 80px; */
-			width: 166px;
-			height: 166px;
+			width: 133px;
+			height: 133px;
 			border-radius: 100%;
-			/* border-top-left-radius: 100%; */
 			position: absolute;
-			/* bottom: 0; */
-			/* right: 0; */
 			bottom: -66px;
 			right: -66px;
-			animation: backgroundFiller .3s ease infinite;
-			transition: width .3s ease-in-out, height .3s ease-in-out, border-top-right-radius .1s ease-in-out;
+			animation: backgroundFillerOut .5s ease forwards;
+			transition: width .5s ease-in-out, height .5s ease-in-out, bottom .5s ease-in-out, right .5s ease-in-out;
 		}
 
+		//#region hover fill animation
 		@keyframes backgroundFiller {
 			0% {
-				width: 166px;
-				height: 166px;
+				width: 133px;
+				height: 133px;
+				bottom: -66px;
+				right: -66px;
 			}
-			25% {
-				width: 50%;
-				height: 50%;
-			}
-			50% {
-				border-top-right-radius: 0;
-				width: 100%;
-				height: 150%;
-			}
+
 			100% {
-				width: 150%;
-				height: 200%;
+				height: 992px;
+				width: 992px;
+
+				bottom: -496px;
+				right: -496px;
 			}
 		}
 
+		@keyframes backgroundFillerOut {
+			0% {
+				height: 992px;
+				width: 992px;
+				bottom: -496px;
+				right: -496px;
+			}
+
+			100% {
+				width: 133px;
+				height: 133px;
+				bottom: -66px;
+				right: -66px;
+			}
+		}
+		//#endregion hover fill animation
+
 		&:hover {
+			color: #fff;		
+			border-color: #CD1D19;
+			background-color: #CD1D19;
+			img { filter: invert(1) brightness(2); }
+
+			transition: 
+				background-color .4s .1s ease, 
+				border-color .1s ease;
+			
 			&::before {
+				animation: backgroundFiller .5s ease forwards;
 				border-top-right-radius: 0;
-				width: 150%;
-				height: 200%;
 			}
 		}
 
@@ -78,7 +100,7 @@ const StyledCards = styled.ul`
 	}
 `;
 
-const Cards = ({ cards }: CardsProps) => {
+const Cards: FC<CardsProps> = ({ cards }) => {
 	return (
 		<StyledCards>
 		{

@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from "next/image";
-import { ComponentType, ReactNode } from "react";
+import { ComponentType, FC, ReactNode } from "react";
 import styled from "styled-components";
 
 const CardText = styled.p`
@@ -31,13 +31,9 @@ export const StyledCard = styled.div`
 		flex-shrink: 0;
 	}
 
-	&:hover {
-		/* background-color: #CD1D19; */
-		color: #FFFFFF;
-
-		img {
-			filter: invert(1) brightness(2);
-		}
+	img {
+		user-drag: none;
+  	user-select: none;
 	}
 `;
 
@@ -48,7 +44,7 @@ type Card = {
 	as?: string | ComponentType<any>;
 };
 
-const Card = ({ children, image, as }: Card ) => {
+const Card: FC<Card> = ({ children, image, as }) => {
 	return (
 		<StyledCard
 			as={as}

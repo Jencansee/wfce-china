@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
 
-const StyledSection = styled.section`
+export const StyledSection = styled.section`
 	padding: 12rem 0;
 
 	@media(min-width: 768px) {

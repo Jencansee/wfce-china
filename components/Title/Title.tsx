@@ -10,6 +10,7 @@ type marginBottom = {
 type StyledTitleProps = {
 	marginBottom?: marginBottom;
 	alignCenter?: boolean;
+	shouldDivide?: boolean;
 }
 
 const StyledTitle = styled.h2<StyledTitleProps>`
@@ -18,6 +19,7 @@ const StyledTitle = styled.h2<StyledTitleProps>`
 	line-height: 1.2;
 	text-align: ${({ alignCenter }) => alignCenter ? 'center' : 'left'};
 	margin-bottom: ${({ marginBottom }) => marginBottom ? marginBottom.sm : ''};
+	${({ shouldDivide }) => shouldDivide ? 'white-space: pre-line' : ''};
 
 
 	@media (min-width: 548px) {
@@ -39,11 +41,17 @@ interface TitleProps {
 	children: string;
 	marginBottom?: marginBottom;
 	alignCenter?: boolean;
+	//* parse newliners, will be disable in 548px
+	shouldDivide?: boolean;
 }
 
-const Title = ({ children, marginBottom, alignCenter }: TitleProps) => {
+const Title = ({ children, marginBottom, alignCenter, shouldDivide }: TitleProps) => {
 	return (
-		<StyledTitle alignCenter={alignCenter} marginBottom={marginBottom}>{children}</StyledTitle>
+		<StyledTitle 
+			alignCenter={alignCenter} 
+			marginBottom={marginBottom}
+			shouldDivide={shouldDivide}
+		>{children}</StyledTitle>
 	)
 };
 

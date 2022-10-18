@@ -18,7 +18,7 @@ const GlobalStyles = createGlobalStyle`
 	  text-decoration: none;
 	}
 	
-	ul { list-style: none; }
+	ul, ol { list-style: none; }
 	button { border: 0; cursor: pointer; font-family: inherit; }
 `;
 

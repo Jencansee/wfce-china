@@ -1,14 +1,15 @@
-import React, { ButtonHTMLAttributes, ReactNode } from "react";
+import { ButtonHTMLAttributes } from "react";
 import styled from "styled-components";
 
 
 interface ButtonProps {
 	children: string;
+	handleClick?: () => void;
 	type?: ButtonHTMLAttributes<HTMLButtonElement>["type"];
 }
 
-const DefaultButton = styled.button`
-	font-size: 2rem;
+export const DefaultButton = styled.button`
+	font-size: 1.6rem;
 	color: #fff;
 	font-weight: 700;
 	line-height: 1;
@@ -33,11 +34,16 @@ const DefaultButton = styled.button`
 		background-color: #CD1D19;
 	}
 	
+	@media (min-width: 768px) {
+		padding: 1.8rem 6rem;
+		font-size: 2rem;
+	}
 `;
 
-const Button = ({ children, type }: ButtonProps) => {
+const Button = ({ children, type, handleClick }: ButtonProps) => {
 	return (
 		<DefaultButton
+			onClick={handleClick}
 			type={type || 'button'} 
 		>
 			{ children }

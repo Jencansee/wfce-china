@@ -4,18 +4,28 @@ import { IsEmail, IsNotEmpty, IsString, MaxLength, MinLength } from 'class-valid
 import { Body, createHandler, Post, Res, ValidationPipe } from 'next-api-decorators';
 
 class contactDTO {
-	@IsNotEmpty()
+	@IsNotEmpty({
+		message: 'Name is required'
+	})
 	@IsString()
-	@MinLength(3)
-	@MaxLength(30)
-	name: string;
+	@MinLength(3, {
+		message: 'Name is too short'
+	})
+	@MaxLength(30, {
+		message: 'Name is too long'
+	})
+	name: string = '';
 
-	@IsNotEmpty()
-	@IsEmail()
-	email: string;
+	@IsNotEmpty({
+		message: 'Email is required'
+	})
+	@IsEmail({}, {
+		message: 'Email is invalid'
+	})
+	email: string = '';
 
 	@IsString()
-	message: string;
+	message: string = '';
 }
 
 class ContactHandler {
@@ -23,14 +33,12 @@ class ContactHandler {
   async contact(@Res() res: NextApiResponse, @Body(ValidationPipe) body: contactDTO) {
     const emailTemplate = this.makeEmail(body);
 		const emailStatus = await this.sendEmail(emailTemplate);
-
-		console.log(emailStatus);
-		
+				
 		//FIXME find a better way to see code status and send it to client
 		if (
 			emailStatus.rejected.length > 0 && emailStatus.accepted.length < 0
-		) res.status(400).json({ message: 'Email not sent' }); 
-		else res.status(200).json({ message: 'Success' });
+		) res.status(400).json({ statusCode: 400, message: 'Email not sent' }); 
+		else res.status(200).json({ statusCode: 200, message: 'Success' });
   }
 
 	async sendEmail(emailTemplate: string) {

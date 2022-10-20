@@ -149,8 +149,7 @@ const Button = styled.button`
 `;
 
 
-//TODO open modal on click
-const Feedback = () => {
+const Feedback = ({ toggleModal }: { toggleModal: () => void }) => {
 	return (
 		<FeedbackWrapper>
 			<Container>
@@ -159,7 +158,7 @@ const Feedback = () => {
 						<CardTitle>JOIN US</CardTitle>
 						<CardDesc>Become a member of our team</CardDesc>
 					</div>
-					<Button type="button" aria-label="Open our contact form">Go to form</Button>
+					<Button type="button" aria-label="Open our contact form" onClick={toggleModal}>Go to form</Button>
 				</Card>
 				<Card>
 					<div>
@@ -201,7 +200,7 @@ const Feedback = () => {
 							<p>118 Connaught Road West Hong Kong</p>
 						</TextWithImage>
 					</div>
-					<Button type="button" aria-label="Open our contact form">Go to form</Button>
+					<Button type="button" aria-label="Open our contact form" onClick={toggleModal}>Go to form</Button>
 				</Card>
 			</Container>
 		</FeedbackWrapper>

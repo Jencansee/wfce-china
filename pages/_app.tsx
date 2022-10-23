@@ -1,11 +1,12 @@
-import AllowCookies from '@components/Cookies/Cookies';
-import Feedback from '@components/Feedback/Feedback';
-import Footer from '@components/Footer/Footer';
-import Header from '@components/Header/Header';
 import { NextPage } from 'next';
 import type { AppProps } from 'next/app'
-import { ReactElement, ReactNode, useEffect, useState } from 'react';
 import GlobalStyles from '../styles/GlobalStyles'
+import Header from '@components/Header/Header';
+import Footer from '@components/Footer/Footer';
+import Feedback from '@components/Feedback/Feedback';
+import AllowCookies from '@components/Cookies/Cookies';
+import { GlobalContextProvider } from 'contexts/globalFormContext';
+import { ReactElement, ReactNode, useEffect, useState } from 'react';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode
@@ -34,16 +35,16 @@ function MyApp({ Component, pageProps }: ComponentWithPageLayout) {
 
 
 	return (
-		<>
+		<GlobalContextProvider> 
 			<GlobalStyles />
 			<AllowCookies allowCookies={allowCookies} handleAllowCookies={handleAllowCookies} />
 			<Header />
 
 			{ getLayout(<Component {...pageProps} />) }
 
-			<Feedback toggleModal={() => console.log('weqwe')} />
+			<Feedback />
 			<Footer />
-		</>
+		</GlobalContextProvider>
 	)
 };
 

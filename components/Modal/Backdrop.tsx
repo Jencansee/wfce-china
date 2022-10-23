@@ -1,5 +1,5 @@
-import { PropsWithChildren } from "react";
 import styled from "styled-components";
+import { PropsWithChildren } from "react";
 
 export interface BackdropProps { 
 	handleClick?: () => void,
@@ -21,9 +21,9 @@ export const StyledBackdrop = styled.div<BackdropProps>`
 
 const Backdrop = ({ 
 	children, opacity, 
-	handleClick, revealState 
+	handleClick, revealState, indexZ
 }: PropsWithChildren<BackdropProps>) => (
-	<StyledBackdrop onClick={handleClick} opacity={opacity} revealState={revealState}>
+	<StyledBackdrop onClick={handleClick} opacity={opacity} revealState={revealState} indexZ={indexZ}>
 		{children}
 	</StyledBackdrop>
 );

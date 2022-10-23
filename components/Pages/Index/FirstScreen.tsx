@@ -90,8 +90,13 @@ const MainHeading = styled.h2`
 
 const ChineseHeading = styled.span`
 	display: block;
-	font-size: 2.2rem;
-	margin-top: 2rem;
+	font-size: 1.8rem;
+	margin-top: 1.5rem;
+	
+	@media (min-width: 350px) {
+		margin-top: 2rem;
+		font-size: 2.2rem;
+	}
 
 	@media (min-width: 768px) {
 		font-size: 4rem;

@@ -1,6 +1,6 @@
 import DefaultLayout from '@layouts/default';
 import { NextPageWithLayout } from './_app';
-import { ReactElement, SyntheticEvent, useState } from 'react';
+import { ReactElement } from 'react';
 import Container from '@components/Container/Container';
 import Breaker from '@components/Breaker';
 import Cards from '@components/Cards/Cards';
@@ -8,7 +8,6 @@ import Title from '@components/Title/Title';
 import Section from '@components/Section/Section';
 import Description from '@components/Description/Description';
 import CommonFirstScreen from '@components/FirstScreen/FirstScreen';
-import ModalWithForm from '@components/ModalForm/ModalWithForm';
 
 //* images
 import ImgClipboard from '/assets/images/contour/clipboard.svg';
@@ -22,25 +21,7 @@ import ImgCompass from '/assets/images/contour/compass.svg'
 import ImgEngineerHat from '/assets/images/contour/engineer-hat.svg'
 
 
-
 const Engineering: NextPageWithLayout = () => {
-	const [modalOpen, setModalOpen] = useState('');
-
-	const toggleModal = () => {
-		if (modalOpen === 'open') {
-			setModalOpen('close');
-		} 
-		else {
-			setModalOpen('open');
-		}
-	};
-
-	const handleSubmit = (e: SyntheticEvent) => {
-		e.preventDefault();
-		console.log('submit event');
-	};
-
-
   return (
     <>
 			<CommonFirstScreen
@@ -86,13 +67,6 @@ const Engineering: NextPageWithLayout = () => {
 					<b>WFCE</b> is committed to applying proven solutions, unifying those solutions and how they are used to create uniform industry standards and customer convenience. The company develops a BIM model and applies it throughout the life cycle of the project. 
 				</p>
 			</Breaker>
-
-			{/* //FIXME remove it from here */}
-			<ModalWithForm
-				toggleModal={toggleModal}
-				isOpen={modalOpen}
-				submitHandler={(e: SyntheticEvent) => handleSubmit(e)}
-			/>
     </>
   )
 };

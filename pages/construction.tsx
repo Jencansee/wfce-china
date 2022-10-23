@@ -1,6 +1,6 @@
 import DefaultLayout from '@layouts/default';
 import { NextPageWithLayout } from './_app';
-import { ReactElement, SyntheticEvent, useState } from 'react';
+import { ReactElement } from 'react';
 import Container from '@components/Container/Container';
 import Breaker from '@components/Breaker';
 import Cards from '@components/Cards/Cards';
@@ -8,7 +8,6 @@ import Title from '@components/Title/Title';
 import Section from '@components/Section/Section';
 import Description from '@components/Description/Description';
 import CommonFirstScreen from '@components/FirstScreen/FirstScreen';
-import ModalWithForm from '@components/ModalForm/ModalWithForm';
 
 //* images
 import ImgEdit from '/assets/images/contour/doc-edit.svg'
@@ -29,23 +28,6 @@ import ImgModules from '/assets/images/contour/modules.svg'
 
 
 const Construction: NextPageWithLayout = () => {
-	const [modalOpen, setModalOpen] = useState('');
-
-	const toggleModal = () => {
-		if (modalOpen === 'open') {
-			setModalOpen('close');
-		} 
-		else {
-			setModalOpen('open');
-		}
-	};
-
-	const handleSubmit = (e: SyntheticEvent) => {
-		e.preventDefault();
-		console.log('submit event');
-	};
-
-
   return (
     <>
 			<CommonFirstScreen
@@ -121,13 +103,6 @@ const Construction: NextPageWithLayout = () => {
 					<b>WFCE</b> provides a single digital field and high standards of process management at all stages of construction and commissioning of facilities. 
 				</p>
 			</Breaker>
-
-			{/* //FIXME remove it from here */}
-			<ModalWithForm
-				toggleModal={toggleModal}
-				isOpen={modalOpen}
-				submitHandler={(e: SyntheticEvent) => handleSubmit(e)}
-			/>
     </>
   )
 };

@@ -1,13 +1,12 @@
 import DefaultLayout from '@layouts/default';
 import { NextPageWithLayout } from './_app';
-import { ReactElement, SyntheticEvent, useState } from 'react';
+import { ReactElement } from 'react';
 import Container from '@components/Container/Container';
 import Cards from '@components/Cards/Cards';
 import Title from '@components/Title/Title';
 import Section from '@components/Section/Section';
 import Description from '@components/Description/Description';
 import CommonFirstScreen from '@components/FirstScreen/FirstScreen';
-import ModalWithForm from '@components/ModalForm/ModalWithForm';
 
 //* images
 import ImgMagnifier from '/assets/images/contour/magnifier-person.svg';
@@ -22,23 +21,6 @@ import ImgGauge from '/assets/images/contour/gas-gauge.svg'
 
 
 const Equipment: NextPageWithLayout = () => {
-	const [modalOpen, setModalOpen] = useState('');
-
-	const toggleModal = () => {
-		if (modalOpen === 'open') {
-			setModalOpen('close');
-		} 
-		else {
-			setModalOpen('open');
-		}
-	};
-
-	const handleSubmit = (e: SyntheticEvent) => {
-		e.preventDefault();
-		console.log('submit event');
-	};
-
-
   return (
     <>
 			<CommonFirstScreen
@@ -99,13 +81,6 @@ const Equipment: NextPageWithLayout = () => {
 					/>
 				</Container>
 			</Section>
-
-			{/* //FIXME remove it from here */}
-			<ModalWithForm
-				toggleModal={toggleModal}
-				isOpen={modalOpen}
-				submitHandler={(e: SyntheticEvent) => handleSubmit(e)}
-			/>
     </>
   )
 };

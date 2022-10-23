@@ -1,13 +1,12 @@
 import DefaultLayout from '@layouts/default';
 import { NextPageWithLayout } from './_app';
-import { ReactElement, SyntheticEvent, useState } from 'react';
+import { ReactElement } from 'react';
 import Container from '@components/Container/Container';
 import Breaker from '@components/Breaker';
 import Cards from '@components/Cards/Cards';
 import Title from '@components/Title/Title';
 import Section from '@components/Section/Section';
 import CommonFirstScreen from '@components/FirstScreen/FirstScreen';
-import ModalWithForm from '@components/ModalForm/ModalWithForm';
 import Statement from '@components/Statement/Statement';
 
 //* images
@@ -28,23 +27,6 @@ import ImgIdea from '/assets/images/contour/idea-cog.svg';
 
 
 const Engineering: NextPageWithLayout = () => {
-	const [modalOpen, setModalOpen] = useState('');
-
-	const toggleModal = () => {
-		if (modalOpen === 'open') {
-			setModalOpen('close');
-		} 
-		else {
-			setModalOpen('open');
-		}
-	};
-
-	const handleSubmit = (e: SyntheticEvent) => {
-		e.preventDefault();
-		console.log('submit event');
-	};
-
-
   return (
     <>
 			<CommonFirstScreen
@@ -136,13 +118,6 @@ const Engineering: NextPageWithLayout = () => {
 					Our own analytical department, constantly growing business competencies of the company&apos;s experts, the use of digital technologies at all stages, proven technologies in management, and transparency of processes make it possible to create effective, in-demand enterprises. 
 				</p>
 			</Breaker>
-
-			{/* //FIXME remove it from here */}
-			<ModalWithForm
-				toggleModal={toggleModal}
-				isOpen={modalOpen}
-				submitHandler={(e: SyntheticEvent) => handleSubmit(e)}
-			/>
     </>
   )
 };

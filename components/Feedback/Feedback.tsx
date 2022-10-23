@@ -1,12 +1,13 @@
 import Image from "next/image";
 import styled from "styled-components";
-import  Container, { StyledContainer } from "../Container/Container";
 import { StyledSection } from "../Section/Section";
+import  Container, { StyledContainer } from "../Container/Container";
 
 //* icons
 import EmailIcon from "/assets/images/ui/mail.svg";
 import PhoneIcon from "/assets/images/ui/phone.svg";
 import NavIcon from "/assets/images/ui/location.svg";
+import { useGlobalContext } from "contexts/globalFormContext";
 
 const FeedbackWrapper = styled(StyledSection)`
 	${StyledContainer} {
@@ -85,7 +86,6 @@ const ImageWrapper = styled.div`
 	@media(min-width: 576px) { width: 20px; height: 20px;	}
 `;
 
-
 //* cool btn
 const Button = styled.button`
 	z-index: 2;
@@ -148,8 +148,10 @@ const Button = styled.button`
 	}
 `;
 
+const Feedback = () => {
+	const { isModalActive, setModal } = useGlobalContext();
+	const handleClick = () => isModalActive === 'open' ? setModal('close') : setModal('open');
 
-const Feedback = ({ toggleModal }: { toggleModal: () => void }) => {
 	return (
 		<FeedbackWrapper>
 			<Container>
@@ -158,7 +160,13 @@ const Feedback = ({ toggleModal }: { toggleModal: () => void }) => {
 						<CardTitle>JOIN US</CardTitle>
 						<CardDesc>Become a member of our team</CardDesc>
 					</div>
-					<Button type="button" aria-label="Open our contact form" onClick={toggleModal}>Go to form</Button>
+					<Button 
+						type="button" 
+						aria-label="Open our contact form" 
+						onClick={handleClick}
+					>
+						Go to form
+					</Button>
 				</Card>
 				<Card>
 					<div>
@@ -200,7 +208,13 @@ const Feedback = ({ toggleModal }: { toggleModal: () => void }) => {
 							<p>118 Connaught Road West Hong Kong</p>
 						</TextWithImage>
 					</div>
-					<Button type="button" aria-label="Open our contact form" onClick={toggleModal}>Go to form</Button>
+					<Button 
+						type="button" 
+						aria-label="Open our contact form" 
+						onClick={handleClick}
+					>
+						Go to form
+					</Button>
 				</Card>
 			</Container>
 		</FeedbackWrapper>

@@ -23,9 +23,14 @@ const ModalHolder = styled.div`
 `;
 
 const ModalContent = styled.div<ModalContentProps>`
+	height: 100%;
 	opacity: 0; z-index: 9999;
 	transition: opacity .25s ease-in-out;
 	opacity: ${({ revealState }) => revealState ? 1 : 0}; 
+
+	@media (min-height: 450px) {
+		height: auto;
+	}
 `;
 
 //#endregion modal elements

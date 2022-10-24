@@ -16,12 +16,7 @@ const StyledFirstScreen = styled.section`
 		padding: 4rem 1.5rem 0;
 
 		@media(min-width: 456px) {
-			padding: 8rem 1.5rem;
-		}
-
-		@media (min-width: 540px) {
-			padding-top: 19.4rem;
-			padding-bottom: 19.4rem;
+			padding: 8rem 1.5rem 0;
 		}
 
 		@media (min-width: 768px) {
@@ -44,15 +39,10 @@ const FsImageWrapper = styled.div`
 	}
 
 	@media (min-width: 768px) {
-		width: 100%;
+		width: 70%;
 		max-height: 80%;
 		position: absolute;
 		bottom: 0; right: 0;
-	}
-	
-	@media(min-width: 992px) {
-		position: absolute;
-		width: 70%;
 	}
 `;
 
@@ -125,6 +115,7 @@ const FirstScreen = ({
 				<FsImageWrapper>
 					<Image
 						alt=""
+						priority={true}
 						src={GuyFsImage}
 						sizes="(min-width: 768px) 1426px 900px,
 							(min-width: 576px) 763px 499px,

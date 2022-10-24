@@ -13,7 +13,7 @@ export const StyledBackdrop = styled.div<BackdropProps>`
 	position: fixed; top: 0; right: 0; bottom: 0; left: 0;
 	background-color: rgba(0, 0, 0, ${({ opacity }) => opacity || .5});
 	z-index: ${({ indexZ }) => indexZ || 50};
-	height: 100vh; width: 100%;
+	min-height: 100vh; height: 100%; width: 100%;
 	opacity: 0; transition: opacity .25s ease-in-out;
 
 	opacity: ${({ revealState }) => revealState ? 1 : 0}; 

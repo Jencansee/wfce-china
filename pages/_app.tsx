@@ -3,7 +3,6 @@ import type { AppProps } from 'next/app'
 import GlobalStyles from '../styles/GlobalStyles'
 import Header from '@components/Header/Header';
 import Footer from '@components/Footer/Footer';
-import Feedback from '@components/Feedback/Feedback';
 import AllowCookies from '@components/Cookies/Cookies';
 import { GlobalContextProvider } from 'contexts/globalFormContext';
 import { ReactElement, ReactNode, useEffect, useState } from 'react';
@@ -37,13 +36,12 @@ function MyApp({ Component, pageProps }: ComponentWithPageLayout) {
 	return (
 		<GlobalContextProvider> 
 			<GlobalStyles />
-			<AllowCookies allowCookies={allowCookies} handleAllowCookies={handleAllowCookies} />
 			<Header />
 
 			{ getLayout(<Component {...pageProps} />) }
 
-			<Feedback />
 			<Footer />
+			<AllowCookies allowCookies={allowCookies} handleAllowCookies={handleAllowCookies} />
 		</GlobalContextProvider>
 	)
 };

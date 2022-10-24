@@ -1,10 +1,15 @@
 import styled from "styled-components";
 
-const StyledDescription = styled.p`
+interface DescriptionProps {
+	textAlign?: string;
+	children: string;
+}
+
+const StyledDescription = styled.p<DescriptionProps>`
 	font-size: 1.8rem;
 	font-weight: 400;
 	line-height: 1.2;
-	text-align: center;
+	text-align: ${({ textAlign }) => textAlign || 'center'};
 	margin-bottom: 4rem;
 
 	@media(min-width: 576px) {
@@ -14,8 +19,8 @@ const StyledDescription = styled.p`
 	}
 `;
 
-const Description = ({ children }: { children: string }) => {
-	return <StyledDescription>{children}</StyledDescription>
+const Description = ({ children, textAlign }: DescriptionProps) => {
+	return <StyledDescription textAlign={textAlign}>{children}</StyledDescription>
 };
 
 export default Description;

@@ -148,10 +148,9 @@ const Button = styled.button`
 	}
 `;
 
-const Feedback = () => {
-	const { isModalActive, setModal } = useGlobalContext();
-	const handleClick = () => isModalActive === 'open' ? setModal('close') : setModal('open');
-
+const Feedback = ({
+	handleClick 
+}: { handleClick: () => void }) => {
 	return (
 		<FeedbackWrapper>
 			<Container>

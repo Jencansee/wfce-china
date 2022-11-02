@@ -117,7 +117,8 @@ const FirstScreen = ({
 						alt=""
 						priority={true}
 						src={GuyFsImage}
-						sizes="(min-width: 768px) 1426px 900px,
+						sizes="
+							(min-width: 768px) 1426px 900px,
 							(min-width: 576px) 763px 499px,
 							424px 267px"
 						layout="responsive"

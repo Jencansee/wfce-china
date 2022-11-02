@@ -1,8 +1,14 @@
 import styled from "styled-components";
 
+type marginBottom = {
+	sm?: string;
+	md?: string;
+}
+
 interface DescriptionProps {
 	textAlign?: string;
 	children: string;
+	marginBottom?: marginBottom;
 }
 
 const StyledDescription = styled.p<DescriptionProps>`
@@ -10,17 +16,17 @@ const StyledDescription = styled.p<DescriptionProps>`
 	font-weight: 400;
 	line-height: 1.2;
 	text-align: ${({ textAlign }) => textAlign || 'center'};
-	margin-bottom: 4rem;
+	margin-bottom: ${({ marginBottom }) => marginBottom?.sm || '4rem'};
 
 	@media(min-width: 576px) {
 		font-size: 2.4rem;
-		margin-bottom: 6rem;
+		margin-bottom: ${({ marginBottom }) => marginBottom?.md || '6rem'};
 		white-space: pre-line;
 	}
 `;
 
-const Description = ({ children, textAlign }: DescriptionProps) => {
-	return <StyledDescription textAlign={textAlign}>{children}</StyledDescription>
+const Description = ({ children, textAlign, marginBottom }: DescriptionProps) => {
+	return <StyledDescription textAlign={textAlign} marginBottom={marginBottom}>{children}</StyledDescription>
 };
 
 export default Description;

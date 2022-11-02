@@ -68,7 +68,6 @@ type Card = {
 };
 
 
-
 const Card = ({ children, image }: PropsWithChildren<Card>) => {
 	const [isHovered, setHovered] = useState(false);
 

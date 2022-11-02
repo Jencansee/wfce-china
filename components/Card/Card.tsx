@@ -74,7 +74,7 @@ const Card = ({ children, image }: PropsWithChildren<Card>) => {
 
 	useEffect(() => {
 		let timer: NodeJS.Timeout;
-		timer = setTimeout(() => setHovered(false), 500);
+		timer = setTimeout(() => setHovered(false), 1500);
 
 		return () => clearTimeout(timer);
 	}, [isHovered]);

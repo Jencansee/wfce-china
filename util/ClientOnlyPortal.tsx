@@ -1,4 +1,4 @@
-import { useRef, useState, ReactNode, useEffect, PropsWithChildren, MutableRefObject } from 'react';
+import { useRef, useState, ReactNode, useEffect, MutableRefObject } from 'react';
 import { createPortal } from 'react-dom';
 
 

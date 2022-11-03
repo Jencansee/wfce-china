@@ -1,5 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
 import nodemailer from 'nodemailer';
+import type { NextApiResponse } from 'next';
 import { IsEmail, IsNotEmpty, IsString, MaxLength, MinLength } from 'class-validator';
 import { Body, createHandler, Post, Res, ValidationPipe } from 'next-api-decorators';
 
@@ -26,18 +26,24 @@ class contactDTO {
 
 	@IsString()
 	message: string = '';
-}
+};
 
 class ContactHandler {
   @Post() 
   async contact(@Res() res: NextApiResponse, @Body(ValidationPipe) body: contactDTO) {
-    const emailTemplate = this.makeEmail(body);
+		const emailTemplate = this.makeEmail(body);
 		const emailStatus = await this.sendEmail(emailTemplate);
-				
-		//FIXME find a better way to see code status and send it to client
+		console.log('here email status!', emailStatus);
+
 		if (
-			emailStatus.rejected.length > 0 && emailStatus.accepted.length < 0
-		) res.status(400).json({ statusCode: 400, message: 'Email not sent' }); 
+			emailStatus.rejected.length > 0 && 
+			emailStatus.accepted.length < 0
+		) {
+			res.status(400).json({ 
+				statusCode: 400, 
+				message: 'Email not sent, please try again later.\n If the problem persists, please contact us directly.' 
+			}); 
+		}
 		else res.status(200).json({ statusCode: 200, message: 'Success' });
   }
 
@@ -52,6 +58,11 @@ class ContactHandler {
 				pass: testAccount.pass,
 			}
 		});
+
+		// transporter.verify((err, success) => {
+		// 	if (err) console.log('transporter error', err);
+		// 	else console.log('transporter success', success);
+		// });
 
 		let info = await transporter.sendMail({
 			from: 'noreply@wfce.ae',
@@ -76,7 +87,6 @@ class ContactHandler {
 			</div>
 		`
 	};
-}
-
+};
 
 export default createHandler(ContactHandler);

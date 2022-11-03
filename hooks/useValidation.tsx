@@ -17,14 +17,16 @@ export const useLoginFormValidator = (
 
 
   const validateForm = ({ 
-		form, field, errors, 
+		form, field, 
+		errors, forceTouchErrors = true
 	}: validateFormInterface) => {
     let isNotValid = true;
 
     // Create a deep copy of the errors
     let nextErrors: errorsInterface = JSON.parse(JSON.stringify(errors));
 
-    
+    if (forceTouchErrors) nextErrors = touchErrors(errors);
+
     const { email, name } = form;
 
     if (nextErrors.email.dirty && (field ? field === "email" : true)) {
@@ -49,6 +51,21 @@ export const useLoginFormValidator = (
       isNotValid, errors: nextErrors
     };
   };
+
+
+	const touchErrors = (errors: errorsInterface) => (
+		Object.entries(errors).reduce((
+			acc: errorsInterface, 
+			[field, fieldError]
+		) => {
+			acc[field] = {
+				...fieldError,
+				dirty: true,
+			};
+
+			return acc;
+		}, {})
+	);
 
   const onBlurField = (target: HTMLInputElement) => {
     const field = target.name;

@@ -15,4 +15,5 @@ export interface validateFormInterface {
 	form: form,
 	field?: field,
 	errors: errorsInterface
+	forceTouchErrors?: boolean
 }

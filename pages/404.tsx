@@ -1,8 +1,8 @@
-import Description from "@components/Description/Description";
-import Title from "@components/Title/Title";
-import ErrorLayout from "@layouts/error";
 import { ReactElement } from "react";
-import { NextPageWithLayout } from "./_app";
+import { NextPageWithLayout } from "types";
+import ErrorLayout from "@layouts/error";
+import Title from "@components/Title/Title";
+import Description from "@components/Description/Description";
 
 const NotFound: NextPageWithLayout = () => (
 	<div>

@@ -1,6 +1,6 @@
 import IndexLayout from '@layouts/index';
-import { NextPageWithLayout } from './_app';
-import { ReactElement, SyntheticEvent } from 'react';
+import { NextPageWithLayout } from 'types';
+import { ReactElement } from 'react';
 import ModalWithForm from '@components/ModalForm/ModalWithForm';
 import { useGlobalContext } from 'contexts/globalFormContext';
 import FirstScreen from '@components/Pages/Index/FirstScreen';
@@ -24,11 +24,6 @@ import statementImage from '/assets/images/index/statement.png';
 const Home: NextPageWithLayout = () => {
 	const { isModalActive, setModal } = useGlobalContext();
 	const handleClick = () => isModalActive === 'open' ? setModal('close') : setModal('open');
-
-	const handleSubmit = (e: SyntheticEvent) => {
-		e.preventDefault();
-		console.log('submit event');
-	};
 
   return (
     <>
@@ -75,7 +70,6 @@ const Home: NextPageWithLayout = () => {
 			<ModalWithForm
 				toggleModal={handleClick}
 				isOpen={isModalActive}
-				submitHandler={(e: SyntheticEvent) => handleSubmit(e)}
 			/>
     </>
   )

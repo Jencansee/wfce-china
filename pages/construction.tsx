@@ -1,5 +1,5 @@
 import DefaultLayout from '@layouts/default';
-import { NextPageWithLayout } from './_app';
+import { NextPageWithLayout } from 'types';
 import { ReactElement } from 'react';
 import Container from '@components/Container/Container';
 import Breaker from '@components/Breaker';

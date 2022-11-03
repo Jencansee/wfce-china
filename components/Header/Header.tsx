@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { useEffect, useState } from 'react';
 import { LargeContainer, StyledContainer } from '@components/Container/Container';
 import Burger, { BurgerWrapper } from '@components/Burger/Burger';
@@ -9,7 +9,17 @@ import BurgerNavigation from '@components/Burger/BurgerNavigation';
 
 interface HeaderProps {
 	isHidden?: boolean;
+	isLoading?: boolean;
 };
+
+const loadingBarAnimation = keyframes`
+	0% {
+		padding: 0;
+	}
+	100% {
+		padding: 0 100%;
+	}
+`;
 
 const StyledHeader = styled.header<HeaderProps>`
 	position: fixed;
@@ -31,6 +41,20 @@ const StyledHeader = styled.header<HeaderProps>`
 			display: none;
 			visibility: hidden;
 		}
+	}
+
+	::before {
+		content: '';
+		position: absolute;
+		background-color: #CD1D19;
+		bottom: -.2rem; left: 0;
+		z-index: 10;
+		height: 4px;
+
+		animation-duration: .8s;
+		animation-fill-mode: forwards;
+		animation-timing-function: ease;
+		animation-name: ${({ isLoading }) => isLoading && loadingBarAnimation};
 	}
 `;
 
@@ -126,7 +150,7 @@ const Navigation = styled.nav`
 	}
 `;
 
-const Header = () => {
+const Header = ({ isLoading }: HeaderProps) => {
 	const [navOpen, setNavOpen] = useState(false);
 	const [offset, setOffset] = useState(0);
 
@@ -144,6 +168,7 @@ const Header = () => {
 	return (
 		<StyledHeader
 			isHidden={offset > 100}
+			isLoading={isLoading}
 		>
 			<LargeContainer>
 				<Link href="/">

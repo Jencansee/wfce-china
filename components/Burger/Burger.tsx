@@ -1,4 +1,3 @@
-import { FC } from "react";
 import styled from "styled-components";
 
 interface BurgerProps {
@@ -38,9 +37,14 @@ export const BurgerWrapper = styled.button<BurgerProps>`
 	}
 `;
 
-const Burger: FC<BurgerProps> = ({ isOpen, clickHandler }) => {
+const Burger = ({ 
+	isOpen, clickHandler 
+}: BurgerProps) => {
 	return (
-		<BurgerWrapper onClick={clickHandler} isOpen={isOpen}>
+		<BurgerWrapper 
+			onClick={clickHandler} isOpen={isOpen} 
+			aria-label="Open navigation" title="Open navigation"
+		>
 			<span />
 			<span />
 			<span />

@@ -83,7 +83,7 @@ const BurgerNavigation = ({ isBurgerOpen, burgerToggler }: {
 
 	return (
 		<>
-			<NavBackdrop indexZ={300} revealState={true} onClick={burgerToggler} ></NavBackdrop>
+			<NavBackdrop indexZ={300} revealState={true} onClick={burgerToggler}></NavBackdrop>
 			<BurgerWrapper
 				isOpen={anim}
 				onClick={burgerToggler}

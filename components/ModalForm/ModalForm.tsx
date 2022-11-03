@@ -130,38 +130,42 @@ const ModalForm = ({ toggleModal }: ModalFormProps) => {
 		e.preventDefault();
 		
 		const { isNotValid } = validateForm({ form, errors });
-		console.log(isNotValid)
+
 		if (!isNotValid) {
+			setLoading(true);
 
-		setLoading(true);
+			//* reset form
+			setServerError({ statusCode: 400, message: '' });
 
-		//* reset form
-		setServerError({ statusCode: 400, message: '' });
+			fetch('/api/contact', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ 
+					name: form.name,
+					email: form.email,
+					message: message.current?.value 
+				}),
+			})
+			.then(res => res.json())
+			.then(data => {
+				setLoading(false);
 
-		fetch('/api/contact', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({ 
-				name: form.name,
-				email: form.email,
-				message: message.current?.value 
-			}),
-		})
-		.then(res => res.json())
-		.then(data => {
-			setLoading(false);
-
-			if (data.statusCode >= 200 && data.statusCode < 300) setSuccess(true)
-			else {
+				if (data.statusCode >= 200 && data.statusCode < 300) setSuccess(true)
+				else {
+					setServerError({
+						message: data.message,
+						statusCode: data.statusCode,
+					});
+				}
+			})
+			.catch(err => {
 				setServerError({
-					message: data.message,
-					statusCode: data.statusCode,
-				});
-			}
-		})
-		.catch(err => console.warn('Form was not submitted', err.name));
+					message: 'Form was not submitted, please try again later.',
+					statusCode: err.name
+				})
+			});
 		}
 	};
 
@@ -213,7 +217,7 @@ const ModalForm = ({ toggleModal }: ModalFormProps) => {
 								forwardedRef={message}
 							/>
 					</ModalInputs>
-					{ serverError.message && <StyledError>{serverError.message}</StyledError> }
+					{ !!serverError.message && <StyledError>{serverError.message}</StyledError> }
 					<ModalFormButton 
 						type="submit"
 						aria-disabled={loading}

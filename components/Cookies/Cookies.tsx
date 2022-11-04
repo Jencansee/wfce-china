@@ -43,6 +43,8 @@ const Cookies = styled.div`
 
 const CookieIcon = styled.div`
 	flex-shrink: 0;
+	position: relative;
+	width: 4rem; height: 4rem;
 `;
 
 interface CookiesProps {
@@ -62,10 +64,10 @@ const AllowCookies = ({
 					<Cookies>
 						<CookieIcon>
 							<Image
-								src={CookiesImg}
 								alt=""
-								width={40}
-								height={40}
+								src={CookiesImg}
+								quality={100}
+								sizes="(min-width: 768px) 80px, 40px"
 							/>
 						</CookieIcon>
 						<p>We use cookies</p>

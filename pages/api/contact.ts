@@ -62,7 +62,7 @@ class ContactHandler {
 	async sendEmail(emailTemplate: string) {
 		// const testAccount = await nodemailer.createTestAccount();
 		const transporter = nodemailer.createTransport({
-			host: 'localhost', //? SMTP relay server provided by GoDaddy VPS
+			host: 'dedrelay.secureserver.net', //? SMTP relay server provided by GoDaddy VPS
 			port: 25,
 			secure: false
 		});

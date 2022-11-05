@@ -10,15 +10,16 @@ import Description from '@components/Description/Description';
 import CommonFirstScreen from '@components/FirstScreen/FirstScreen';
 
 //* images
+import FirstScreenImage from 'assets/images/components/FirstScreen/engineering.png';
 import ImgClipboard from '/assets/images/contour/clipboard.svg';
-import ImgChart from '/assets/images/contour/chart-divided.svg'
-import ImgGraphCircled from '/assets/images/contour/graph-circled.svg'
-import ImgLamp from '/assets/images/contour/lamp.svg'
-import ImgClipboardOk from '/assets/images/contour/clipboard-ok.svg'
-import ImgResearch from '/assets/images/contour/research.svg'
-import ImgStamp from '/assets/images/contour/stamp.svg'
-import ImgCompass from '/assets/images/contour/compass.svg'
-import ImgEngineerHat from '/assets/images/contour/engineer-hat.svg'
+import ImgChart from '/assets/images/contour/chart-divided.svg';
+import ImgGraphCircled from '/assets/images/contour/graph-circled.svg';
+import ImgLamp from '/assets/images/contour/lamp.svg';
+import ImgClipboardOk from '/assets/images/contour/clipboard-ok.svg';
+import ImgResearch from '/assets/images/contour/research.svg';
+import ImgStamp from '/assets/images/contour/stamp.svg';
+import ImgCompass from '/assets/images/contour/compass.svg';
+import ImgEngineerHat from '/assets/images/contour/engineer-hat.svg';
 
 
 const Engineering: NextPageWithLayout = () => {
@@ -27,7 +28,7 @@ const Engineering: NextPageWithLayout = () => {
 			<CommonFirstScreen
 				pageTitle="Engineering"
 				pageUrl="engineering"
-				backgroundImage="/assets/imgs/backgrounds/engineering.png"
+				backgroundImage={FirstScreenImage}
 				description={
 					["Engineering design with consideration of the project's long-term development strategy, its economy and logistics, a feasibility study and including digital technologies at all stages of implementation - the main principles of WFCE when carrying out engineering works."]
 				}
@@ -74,7 +75,10 @@ const Engineering: NextPageWithLayout = () => {
 
 Engineering.getLayout = (page: ReactElement) => {
 	return (
-		<DefaultLayout title="Engineering">
+		<DefaultLayout
+			title="Engineering"
+			description="Engineering design with consideration of the project's long-term development strategy"
+		>
 			{ page }
 		</DefaultLayout>
 	)

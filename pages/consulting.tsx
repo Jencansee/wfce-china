@@ -11,6 +11,7 @@ import Statement from '@components/Statement/Statement';
 import Partners from '@components/Partners/Partners';
 
 //* images
+import FirstScreenImage from 'assets/images/components/FirstScreen/consulting.png';
 import StatementImage from '/assets/images/components/Statement/plans.jpg';
 import ImgHalfDiag from '/assets/images/contour/diagram-cog.svg'
 import ImgTimer from '/assets/images/contour/timer.svg'
@@ -53,7 +54,7 @@ const Consulting: NextPageWithLayout = () => {
 				pageTitle={'CONSULTING \n AND TRADING'}
 				breadcrumbTitle={'Consulting and trading'}
 				pageUrl="consulting"
-				backgroundImage="/assets/imgs/backgrounds/consulting.png"
+				backgroundImage={FirstScreenImage}
 				description={[
 					'WFCE consulting and trade division provides a full cycle\n of works from searching for a buyer to delivery on time.',
 				]}
@@ -187,7 +188,10 @@ const Consulting: NextPageWithLayout = () => {
 
 Consulting.getLayout = (page: ReactElement) => {
 	return (
-		<DefaultLayout title="Consulting and Trading">
+		<DefaultLayout
+			title="Consulting and Trading"
+			description="Constulting page"
+		>
 			{ page }
 		</DefaultLayout>
 	) 

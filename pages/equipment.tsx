@@ -9,6 +9,7 @@ import Description from '@components/Description/Description';
 import CommonFirstScreen from '@components/FirstScreen/FirstScreen';
 
 //* images
+import FirstScreenImage from 'assets/images/components/FirstScreen/equipment.png';
 import ImgMagnifier from '/assets/images/contour/magnifier-person.svg';
 import ImgClipOk from '/assets/images/contour/clipboard-ok.svg'
 import ImgResearch from '/assets/images/contour/research.svg'
@@ -26,7 +27,7 @@ const Equipment: NextPageWithLayout = () => {
 			<CommonFirstScreen
 				pageTitle={'Equipment'}
 				pageUrl="construction"
-				backgroundImage="/assets/imgs/backgrounds/equipment.png"
+				backgroundImage={FirstScreenImage}
 			/>
 			
 			<Section
@@ -88,7 +89,10 @@ const Equipment: NextPageWithLayout = () => {
 
 Equipment.getLayout = (page: ReactElement) => {
 	return (
-		<DefaultLayout title="Equipment">
+		<DefaultLayout 
+			title="Equipment"
+			description="Equipment"
+		>
 			{ page }
 		</DefaultLayout>
 	) 

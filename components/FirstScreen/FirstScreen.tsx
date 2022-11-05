@@ -1,10 +1,11 @@
 import Container, { LargeContainer } from "@components/Container/Container";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
 
-const StyledFirstScreen = styled.section<FirstScreenContainerProps>`
+//#region styled
+const StyledFirstScreen = styled.section`
 	position: relative;
-	background-image:	${({ backgroundImage }) => backgroundImage && `url(${backgroundImage})`};
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
@@ -106,15 +107,15 @@ const OrderedList = styled.ol`
 		display: inline;
 		color: #fff;
 	}
-`
-interface FirstScreenContainerProps {
-	backgroundImage?: string;
-}
+`;
 
-interface FirstScreenProps extends FirstScreenContainerProps {
+//#endregion styled
+
+interface FirstScreenProps {
+	backgroundImage: StaticImageData;
 	pageUrl: string;
 	pageTitle: string;
-	/** sometimes breadcrump doesn't work the same way as page title */
+	/** sometimes breadcrump doesn't named the same way as page title */
 	breadcrumbTitle?: string;
 	description?: string[];
 };
@@ -124,7 +125,16 @@ const CommonFirstScreen = ({
 	backgroundImage, breadcrumbTitle 
 }: FirstScreenProps) => {
 	return (
-		<StyledFirstScreen backgroundImage={backgroundImage}>
+		<StyledFirstScreen>
+				<Image
+					alt=""
+					layout="fill"
+					quality={100}
+					priority={true}
+					objectFit="cover"
+					src={backgroundImage.src}
+					objectPosition="center center"
+				/>
 			<LargeContainer>
 				<Breadcrumb aria-label="breadcrumb">
 					<OrderedList>
@@ -142,9 +152,9 @@ const CommonFirstScreen = ({
 					<StyledTitle>{ pageTitle.toLocaleUpperCase() }</StyledTitle>
 					<DescriptionHolder>
 						{
-							description && description.map((text, idx) => (
-								<StyledDescription key={`${idx}descriptionFS`}>{ text }</StyledDescription>
-							))
+							description && description.map(
+								(text, idx) => <StyledDescription key={`${idx}descriptionFS`}>{ text }</StyledDescription>
+							)
 						}
 					</DescriptionHolder>
 				</ContentWrapper>

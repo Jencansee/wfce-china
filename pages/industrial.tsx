@@ -10,6 +10,7 @@ import CommonFirstScreen from '@components/FirstScreen/FirstScreen';
 import Statement from '@components/Statement/Statement';
 
 //* images
+import FirstScreenImage from 'assets/images/components/FirstScreen/industrial.png';
 import StatementImage from '/assets/images/components/Statement/mobile.jpg';
 import ImgMagnifier from '/assets/images/contour/magnifier-person.svg';
 import ImgGraphCircled from '/assets/images/contour/graph-circled.svg';
@@ -26,13 +27,13 @@ import ImgAutomationBelt from '/assets/images/contour/automation-belt.svg';
 import ImgIdea from '/assets/images/contour/idea-cog.svg';
 
 
-const Engineering: NextPageWithLayout = () => {
+const Industrial: NextPageWithLayout = () => {
   return (
     <>
 			<CommonFirstScreen
 				pageTitle={"Industrial\n development"}
 				pageUrl="engineering"
-				backgroundImage="/assets/imgs/backgrounds/industrial.png"
+				backgroundImage={FirstScreenImage}
 				description={
 					["WFCE provides industrial development services in the oil and gas and petrochemical industries: a comprehensive model for the implementation of functioning industrial facilities with built-up commercial activities."]
 				}
@@ -123,12 +124,15 @@ const Engineering: NextPageWithLayout = () => {
 };
 
 
-Engineering.getLayout = (page: ReactElement) => {
+Industrial.getLayout = (page: ReactElement) => {
 	return (
-		<DefaultLayout title="Engineering">
+		<DefaultLayout 
+			title="Industrial"
+			description="Industrial"
+		>
 			{ page }
 		</DefaultLayout>
 	)
 };
 
-export default Engineering;
+export default Industrial;

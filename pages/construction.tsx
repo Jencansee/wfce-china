@@ -8,6 +8,7 @@ import Title from '@components/Title/Title';
 import Section from '@components/Section/Section';
 import Description from '@components/Description/Description';
 import CommonFirstScreen from '@components/FirstScreen/FirstScreen';
+import FirstScreenImage from 'assets/images/components/FirstScreen/construction.png';
 
 //* images
 import ImgEdit from '/assets/images/contour/doc-edit.svg'
@@ -34,7 +35,7 @@ const Construction: NextPageWithLayout = () => {
 				pageTitle={'CONSTRUCTION \n MANAGEMENT'}
 				breadcrumbTitle={'Construction management'}
 				pageUrl="construction"
-				backgroundImage="/assets/imgs/backgrounds/construction.png"
+				backgroundImage={FirstScreenImage}
 				description={
 					[
 						'WFCE applies digital technologies and engineering data management system, BIM modeling in the management of construction and installation works. At all levels of construction and installation works, 3D modeling, laser scanning, various ways of fixing the progress of work are used: both to manage the work and to provide the customer with the most complete and accurate information about the progress of the project.',
@@ -110,7 +111,10 @@ const Construction: NextPageWithLayout = () => {
 
 Construction.getLayout = (page: ReactElement) => {
 	return (
-		<DefaultLayout title="CONSTRUCTION MANAGEMENT">
+		<DefaultLayout 
+			title="CONSTRUCTION MANAGEMENT"
+			description="Construction management WFCE carries out comprehensive management of construction and installation and commissioning works"
+		>
 			{ page }
 		</DefaultLayout>
 	) 

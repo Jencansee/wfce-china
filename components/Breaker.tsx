@@ -1,9 +1,10 @@
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 import Container, { StyledContainer } from './Container/Container';
+import BackgroundBreaker from '/assets/images/components/Breaker/breaker.png';
 
 const StyledBreaker = styled.aside`
-	background: #282828 url('/assets/imgs//breaker.png') no-repeat;
+	background: #282828 url(${BackgroundBreaker.src}) no-repeat;
 	background-size: cover;
 	color: #fff;
 	text-align: center;

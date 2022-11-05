@@ -60,21 +60,10 @@ class ContactHandler {
   }
 
 	async sendEmail(emailTemplate: string) {
-		// const testAccount = await nodemailer.createTestAccount();
 		const transporter = nodemailer.createTransport({
 			host: 'dedrelay.secureserver.net', //? SMTP relay server provided by GoDaddy VPS
 			port: 25,
-			secure: false
 		});
-		// const transporter = nodemailer.createTransport({
-		// 	host: "smtp.ethereal.email",
-		// 	port: 587,
-		// 	secure: false,
-		// 	auth: {
-		// 		user: testAccount.user,
-		// 		pass: testAccount.pass,
-		// 	}
-		// });
 
 		transporter.verify((err, success) => {
 			if (err) console.log('transporter error', err);
@@ -84,11 +73,9 @@ class ContactHandler {
 		let info = await transporter.sendMail({
 			from: 'noreply@wfcecorporation.com',
 			to: 'adamred280@gmail.com',
-			subject: 'WFCE: Contact Form Submition',
+			subject: '📨 WFCE: Contact Form Submission',
 			html: emailTemplate,
 		});
-				
-		// console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
 		
 		return info;
 	};

@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps }: ComponentWithPageLayout) {
 	//* Handle loading 
 	useEffect(() => {
 		const handleStart = (url: string) => url !== router.asPath && setLoading(true);
-		const handleComplete = (url: string) => url === router.asPath && setTimeout(() => setLoading(false), 250);
+		const handleComplete = () => setTimeout(() => setLoading(false), 250);
 
 		router.events.on('routeChangeStart', handleStart);
 		router.events.on('routeChangeComplete', handleComplete);

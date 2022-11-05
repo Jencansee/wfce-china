@@ -1,9 +1,11 @@
-import nodemailer from 'nodemailer';
 import type { NextApiResponse } from 'next';
 import { IsEmail, IsNotEmpty, IsString, MaxLength, MinLength } from 'class-validator';
-import { Body, createHandler, Post, Res, ValidationPipe } from 'next-api-decorators';
+import { Body, createHandler, Get, Post, Res, ValidationPipe } from 'next-api-decorators';
+import nodemailer from 'nodemailer';
+import makeEmail from 'util/makeEmail';
 
-class contactDTO {
+
+export class contactDTO {
 	@IsNotEmpty({
 		message: 'Name is required'
 	})
@@ -29,9 +31,19 @@ class contactDTO {
 };
 
 class ContactHandler {
-  @Post() 
-  async contact(@Res() res: NextApiResponse, @Body(ValidationPipe) body: contactDTO) {
-		const emailTemplate = this.makeEmail(body);
+  @Get()
+	contactGet(@Res() res: NextApiResponse) {
+		res.writeHead(401, {
+			'Location': '/'
+		});
+	}
+
+	@Post() 
+  async contact(
+		@Res() res: NextApiResponse, 
+		@Body(ValidationPipe) body: contactDTO
+	) {
+		const emailTemplate = makeEmail(body);
 		const emailStatus = await this.sendEmail(emailTemplate);
 		console.log('here email status!', emailStatus);
 
@@ -48,44 +60,37 @@ class ContactHandler {
   }
 
 	async sendEmail(emailTemplate: string) {
-		const testAccount = await nodemailer.createTestAccount();
+		// const testAccount = await nodemailer.createTestAccount();
 		const transporter = nodemailer.createTransport({
-			host: "smtp.ethereal.email",
-			port: 587,
-			secure: false,
-			auth: {
-				user: testAccount.user,
-				pass: testAccount.pass,
-			}
+			host: 'localhost', //? SMTP relay server provided by GoDaddy VPS
+			port: 25,
+			secure: false
 		});
-
-		// transporter.verify((err, success) => {
-		// 	if (err) console.log('transporter error', err);
-		// 	else console.log('transporter success', success);
+		// const transporter = nodemailer.createTransport({
+		// 	host: "smtp.ethereal.email",
+		// 	port: 587,
+		// 	secure: false,
+		// 	auth: {
+		// 		user: testAccount.user,
+		// 		pass: testAccount.pass,
+		// 	}
 		// });
 
+		transporter.verify((err, success) => {
+			if (err) console.log('transporter error', err);
+			else console.log('transporter success', success);
+		});
+
 		let info = await transporter.sendMail({
-			from: 'noreply@wfce.ae',
-			to: 'yo@qweqwe.com, qweqwe@asjkd.kz',
+			from: 'noreply@wfcecorporation.com',
+			to: 'adamred280@gmail.com',
 			subject: 'WFCE: Contact Form Submition',
 			html: emailTemplate,
 		});
 				
-		console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+		// console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
 		
 		return info;
-	};
-
-
-	makeEmail(body: contactDTO) {
-		return `
-			<div>
-				<h1>New contact form submition</h1>	
-				<b>Name: </b><p>${body.name}</p>
-				<b>Email: </b><p>${body.email}</p>
-				<b>Message: </b><p>${body.message}</p>
-			</div>
-		`
 	};
 };
 

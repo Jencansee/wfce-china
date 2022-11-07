@@ -44,7 +44,7 @@ const makeEmail = (body: contactDTO) => {
                           <tbody>
                             <tr>
                               <td style="width:54px;">
-                                <img height="65" src="https://wfcecorporation.com/logo_black.svg" style="border:0;display:block;outline:none;text-decoration:none;height:65px;width:100%;font-size:13px;" width="54" />
+                                <img height="65" src="https://wfcecorporation.com/logo_black.png" style="border:0;display:block;outline:none;text-decoration:none;height:65px;width:100%;font-size:13px;" width="54" />
                               </td>
                             </tr>
                           </tbody>

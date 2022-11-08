@@ -12,10 +12,10 @@ const IndexLayout = ({
 	return (
 		<>
     	<Head>
-    	  <title>WORLD FAITH CONSTRUСTION ENGINEERING LIMITED</title>
-				<meta property="og:title" content="WORLD FAITH CONSTRUСTION ENGINEERING LIMITED" />
-				<meta name="description" content="WORLD FAITH CONSTRUСTION ENGINEERING LIMITED" />
-				<meta property="og:description" content="WFCE" />
+    	  <title>World Faith Construction Engineering Limited</title>
+				<meta property="og:title" content="World Faith Construction Engineering Limited" />
+				<meta name="description" content="WFCE is an international engineering company" />
+				<meta property="og:description" content="WFCE is an international engineering company" />
     	</Head>
 			<main>
     	  { children }

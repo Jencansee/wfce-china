@@ -71,7 +71,7 @@ class ContactHandler {
 
 		let info = await transporter.sendMail({
 			from: 'noreply@wfcecorporation.com',
-			to: 'adamred280@gmail.com',
+			to: 'fadievskiy@ya.ru',
 			subject: '📫 WFCE: Contact Form Submission',
 			html: emailTemplate,
 		});

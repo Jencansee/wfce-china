@@ -113,7 +113,7 @@ const makeEmail = (body: contactDTO) => {
       <b>Email:</b>
       <a href="mailto:${body.email}" style="display: block; margin: 13px 0; color: #282828;">${body.email}</a><br />
       <b>Message:</b>
-      <p>${body.message}</p>
+      <p>${body.message ? body.message : '—'}</p>
     </div>
 		</td></tr></tbody></table></div>
     <!--[if mso | IE]></td></tr></table><![endif]-->

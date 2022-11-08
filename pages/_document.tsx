@@ -40,8 +40,8 @@ export default class MainDocument extends Document {
 					<meta property="og:site_name" content="WFCE" />
 	
 					<meta name="twitter:card" content="summary" />
-					<meta name="twitter:title" property="og:title" content="WORLD FAITH CONSTRUСTION ENGINEERING LIMITED" />
-					<meta name="twitter:description" property="og:description" content="WFCE IS A HIGH-TECH ENGINEERING COMPANY" />
+					<meta name="twitter:title" property="og:title" content="World Faith Construction Engineering Limited" />
+					<meta name="twitter:description" property="og:description" content="WFCE is an international engineering company" />
 					<meta name="twitter:image" property="og:image" content="/logo512.png" />
 					<meta name="twitter:image:alt" property="og:image:alt" content="WFCE logo" />
 	

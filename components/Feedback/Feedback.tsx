@@ -170,7 +170,7 @@ const Feedback = ({
 				<Card>
 					<div>
 						<CardTitle as="h3">CONTACT US</CardTitle>
-						<TextWithImage href="mailto:contact@wfcengineering.com" aria-label="Contact via email">
+						<TextWithImage href="mailto:contact@wfcecorporation.com" aria-label="Contact via email">
 							<ImageWrapper>
 								<Image 
 									src={EmailIcon}
@@ -180,7 +180,7 @@ const Feedback = ({
 									layout="responsive"
 								/>
 							</ImageWrapper>
-							<p className="email">contact@wfcengineering.com</p>
+							<p className="email">contact@wfcecorporation.com</p>
 						</TextWithImage>
 						<TextWithImage href="tel:+12366655447" aria-label="Contact via phone">
 							<ImageWrapper>

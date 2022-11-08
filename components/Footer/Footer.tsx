@@ -194,10 +194,10 @@ const Footer = () => {
 			</FooterTop>
 			<FooterBottom>
 				<Container>
-					<Reserved>© 2022 All rights reserved. WFCENGINEERING</Reserved>
+					<Reserved>© 2020-2022 All rights reserved. WFCE Corporation</Reserved>
 					<FooterLinks>
 						<li>
-							<a href="mailto:contact@wfcengineering.com" aria-label="Contact us via email">contact@wfcengineering.com</a>
+							<a href="mailto:contact@wfcecorporation.com" aria-label="Contact us via email">contact@wfcecorporation.com</a>
 						</li>
 						<li>
 							<a href="tel:+12366655447" arai-label="Contact us via phone call">+12366655447</a>

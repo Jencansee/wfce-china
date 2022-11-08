@@ -112,8 +112,8 @@ const Construction: NextPageWithLayout = () => {
 Construction.getLayout = (page: ReactElement) => {
 	return (
 		<DefaultLayout 
-			title="CONSTRUCTION MANAGEMENT"
-			description="Construction management WFCE carries out comprehensive management of construction and installation and commissioning works"
+			title="Construction Management"
+			description="WFCE is an international engineering company"
 		>
 			{ page }
 		</DefaultLayout>

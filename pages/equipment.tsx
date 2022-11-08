@@ -90,8 +90,8 @@ const Equipment: NextPageWithLayout = () => {
 Equipment.getLayout = (page: ReactElement) => {
 	return (
 		<DefaultLayout 
-			title="Equipment"
-			description="Equipment"
+			title="Equipment Services"
+			description="WFCE is an international engineering company"
 		>
 			{ page }
 		</DefaultLayout>

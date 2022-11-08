@@ -1,7 +1,7 @@
 //* This is a section with an image with rounded bottom corner and a text with a title on right side of the image
 import Image, { StaticImageData } from "next/image";
 import styled from "styled-components";
-import Container, { StyledContainer } from "../Container/Container";
+import { StyledContainer } from "../Container/Container";
 import Title from "../Title/Title";
 
 
@@ -21,7 +21,6 @@ const Section = styled.section`
 
 const CustomContainer = styled(StyledContainer)`
 	display: flex;
-	/* flex-wrap: wrap; */
 	align-items: center;
 	justify-content: space-between;
 	flex-direction: column-reverse;
@@ -35,8 +34,12 @@ const ImageContainer = styled.div`
 	height: 30rem;
 	width: 100%;
 
+	// fucking cls error
+	img { 
+		max-width: 100%;
+	}
+
 	span, img {
-		height: 100% !important;
 		width: 100% !important;
 		object-fit: cover;
 	}
@@ -68,14 +71,8 @@ const StatementImage = styled(Image)`
 const StatementContent = styled.div`
 	margin-bottom: 10rem;
 
-	@media(min-width: 548px) {
-		/* width: calc(50% - 3rem); */
-	}
-
 	@media(min-width: 992px) {
 		margin-bottom: 0;
-		/* margin-left: 15rem; */
-		/* width: 44%; */
 		width: calc(50% - 7.5rem);
 	}
 `;
@@ -98,29 +95,34 @@ const StatementText = styled.p`
 		}
 `;
 
-const Statement = ({ title, text, image }: statementProps) => {
-	return (
-		<Section>
-			<CustomContainer>
-				<ImageContainer>
-					<StatementImage 
-						src={image}
-						alt={title}
-					/>
-				</ImageContainer>
-				<StatementContent>
-					<>
-						<Title marginBottom={{ xl: '6rem', lg: '4rem', sm: '2rem'  }}>{title}</Title>
-						{
-							text.map((paragraph, index) => {
-								return <StatementText key={index+'statement'}>{paragraph}</StatementText>
-							})
-						}
-					</>
-				</StatementContent>
-			</CustomContainer>
-		</Section>
-	);
-};
+const Statement = ({ 
+	title, 
+	text, image 
+}: statementProps) => (
+	<Section>
+		<CustomContainer>
+			<ImageContainer>
+				<StatementImage
+					src={image}
+					alt={title}
+				/>
+			</ImageContainer>
+			<StatementContent>
+				<>
+					<Title marginBottom={{ xl: '6rem', lg: '4rem', sm: '2rem'  }}>{title}</Title>
+					{
+						text.map((paragraph, index) => (
+							<StatementText 
+								key={index+'statement'}
+							>
+								{paragraph}
+							</StatementText>
+						))
+					}
+				</>
+			</StatementContent>
+		</CustomContainer>
+	</Section>
+);
 
 export default Statement;

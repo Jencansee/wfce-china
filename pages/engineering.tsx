@@ -77,7 +77,7 @@ Engineering.getLayout = (page: ReactElement) => {
 	return (
 		<DefaultLayout
 			title="Engineering"
-			description="Engineering design with consideration of the project's long-term development strategy"
+			description="WFCE is an international engineering companyy"
 		>
 			{ page }
 		</DefaultLayout>

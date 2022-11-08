@@ -45,7 +45,6 @@ class ContactHandler {
 	) {
 		const emailTemplate = makeEmail(body);
 		const emailStatus = await this.sendEmail(emailTemplate);
-		console.log('here email status!', emailStatus);
 
 		if (
 			emailStatus.rejected.length > 0 && 
@@ -73,7 +72,7 @@ class ContactHandler {
 		let info = await transporter.sendMail({
 			from: 'noreply@wfcecorporation.com',
 			to: 'adamred280@gmail.com',
-			subject: '📨 WFCE: Contact Form Submission',
+			subject: '📫 WFCE: Contact Form Submission',
 			html: emailTemplate,
 		});
 		

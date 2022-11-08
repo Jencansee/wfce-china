@@ -190,7 +190,7 @@ Consulting.getLayout = (page: ReactElement) => {
 	return (
 		<DefaultLayout
 			title="Consulting and Trading"
-			description="Constulting page"
+			description="WFCE is an international engineering company"
 		>
 			{ page }
 		</DefaultLayout>

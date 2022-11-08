@@ -127,8 +127,8 @@ const Industrial: NextPageWithLayout = () => {
 Industrial.getLayout = (page: ReactElement) => {
 	return (
 		<DefaultLayout 
-			title="Industrial"
-			description="Industrial"
+			title="Industrial Development"
+			description="WFCE is an international engineering company"
 		>
 			{ page }
 		</DefaultLayout>

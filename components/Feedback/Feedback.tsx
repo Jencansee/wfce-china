@@ -182,7 +182,7 @@ const Feedback = ({
 							</ImageWrapper>
 							<p className="email">contact@wfcecorporation.com</p>
 						</TextWithImage>
-						<TextWithImage href="tel:+12366655447" aria-label="Contact via phone">
+						<TextWithImage href="tel:+85239733919" aria-label="Contact via phone">
 							<ImageWrapper>
 								<Image 
 									src={PhoneIcon}
@@ -192,7 +192,7 @@ const Feedback = ({
 									layout="responsive"
 								/>
 							</ImageWrapper>
-							<p>+12366655447</p>
+							<p>+85239733919</p>
 						</TextWithImage>
 						<TextWithImage as="div">
 							<ImageWrapper>

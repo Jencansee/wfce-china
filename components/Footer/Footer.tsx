@@ -200,7 +200,7 @@ const Footer = () => {
 							<a href="mailto:contact@wfcecorporation.com" aria-label="Contact us via email">contact@wfcecorporation.com</a>
 						</li>
 						<li>
-							<a href="tel:+12366655447" arai-label="Contact us via phone call">+12366655447</a>
+							<a href="tel:+85239733919" arai-label="Contact us via phone call">+85239733919</a>
 						</li>
 						<li>
 							<p>118 Connaught Road West Hong Kong</p>

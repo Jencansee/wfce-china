@@ -3,7 +3,7 @@ import { PropsWithChildren, ReactNode, useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 
 const CardText = styled.p`
-	font-size: 20px;
+	font-size: 2rem;
 	font-weight: 300;
 	line-height: 1.2;
 

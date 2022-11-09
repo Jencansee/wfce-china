@@ -6,6 +6,7 @@ const nextConfig = {
 	images: {
 		formats: ['image/avif', 'image/webp'],
 	},
+	optimizeFonts: false,
   reactStrictMode: true,
   swcMinify: true,
 }
